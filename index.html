@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Hamburger Menu</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-size: 1rem;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-style: 400;
+      font-weight: normal;
+      line-height: 1.5;
+      color: #333;
+      background-color: #fff;
+      text-align: left;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-weight: 400;
+      font-size: 4rem;
+      letter-spacing: 0.15rem;
+      text-transform: uppercase;
+    }
+    .section1 {
+      background-color: orange;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    /*======================================================================*/
+    /* Hamburger icon design */
+    /*======================================================================*/
+
+    .hmenu-icon {
+      position: fixed;
+      left: 1rem;
+      top: 1rem;
+      cursor: pointer;
+      z-index: 1;
+
+      padding: 0.5rem;
+      background-color: orchid;
+      width: 4rem;
+      height: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      flex-direction: column;
+      transition: transform 0.5s ease-in-out;
+    }
+    .hmenu-icon span {
+      background-color: #fff;
+      height: 0.25rem;
+      width: 100%;
+      display: block;
+      border-radius: 0.25rem;
+      transition: all 0.5s ease-in-out 0.2s;
+    }
+    #toggle-menu {
+      position: fixed;
+      top: 1rem;
+      bottom: 0;
+      right: 0;
+      left: 1rem;
+      cursor: pointer;
+      z-index: 3;
+      opacity: 0;
+      height: 4rem;
+      width: 4rem;
+    }
+    #toggle-menu:checked + .hmenu-icon {
+      transform: rotate(360deg);
+    }
+    #toggle-menu:checked ~ .hmenu-icon span:first-child {
+      transform: rotate(45deg) translate(10px, 10px);
+    }
+    #toggle-menu:checked ~ .hmenu-icon span:last-child {
+      transform: rotate(-45deg) translate(8px, -10px);
+    }
+    #toggle-menu:checked ~ .hmenu-icon span:nth-child(2) {
+      background-color: transparent;
+    }
+    /*======================================================================*/
+    /* Menu design */
+    /*======================================================================*/
+    .site-header {
+      position: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rebeccapurple;
+      visibility: hidden;
+      transition: all 0.4s ease-in-out;
+    }
+    .site-header .menu-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: green;
+      width: 200vw;
+      height: 200vh;
+      border-radius: 100%;
+      flex: 0 0 auto;
+      transform: scale(0);
+      transition: all 0.5s linear;
+    }
+
+    .menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-size: 1.2rem;
+      list-style: none;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: all 1s linear 0.5s;
+    }
+    .menu a {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    /* Show menu on ckick on icon */
+    #toggle-menu:checked ~ #site-containter .site-header {
+      visibility: visible;
+    }
+    #toggle-menu:checked ~ #site-containter .site-header .menu-container {
+      transform: scale(1);
+    }
+    #toggle-menu:checked ~ #site-containter .menu {
+      opacity: 1;
+    }
+  </style>
+  <body>
+    <div class="hmenu-icon-container">
+      <input type="checkbox" name="" id="toggle-menu" />
+      <div class="hmenu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div id="site-containter">
+        <header class="site-header">
+          <div class="menu-container">
+            <ul class="menu">
+              <li>
+                <a href="">Menu1</a>
+              </li>
+              <li>
+                <a href="">Menu2</a>
+              </li>
+              <li>
+                <a href="">Menu3</a>
+              </li>
+              <li>
+                <a href="">Menu4</a>
+              </li>
+            </ul>
+          </div>
+        </header>
+      </div>
+      <main id="site-content">
+        <section class="section1">
+          <div class="container">
+            <h1>Hello World...</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis
+              earum exercitationem animi quasi enim impedit corrupti odit, optio
+              pariatur, itaque quia, officia nobis doloribus possimus vitae
+              ipsum adipisci repudiandae ea!
+            </p>
+          </div>
+        </section>
+      </main>
+      <footer></footer>
+    </div>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/menu.css" />
+    <title>Hamburger Menu Overlay</title>
+  </head>
+  <body>
+    <div class="menu-wrap">
+      <input type="checkbox" class="toggler" />
+      <div class="hamburger"><div></div></div>
+      <div class="menu">
+        <div>
+          <div>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <header id="showcase">
+      <div class="container showcase-container">
+        <h1>Welcome</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas
+          maiores sint impedit delectus quam molestiae explicabo cum facere
+          ratione veritatis.
+        </p>
+        <a href="#" class="btn">Read More</a>
+      </div>
+    </header>
+  </body>
+</html> -->
